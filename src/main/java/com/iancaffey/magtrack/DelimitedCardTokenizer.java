@@ -15,6 +15,15 @@ import java.util.List;
 public class DelimitedCardTokenizer implements CardTokenizer {
     private final char[] delimiters;
 
+    public DelimitedCardTokenizer(CharSequence sequence) {
+        if (sequence == null || sequence.length() == 0)
+            throw new IllegalArgumentException();
+        char[] delimiters = new char[sequence.length()];
+        for (int i = 0; i < delimiters.length; i++)
+            delimiters[i] = sequence.charAt(i);
+        this.delimiters = delimiters;
+    }
+
     /**
      * Constructs a new {@code DelimitedCardTokenizer} with specified pairs of delimiters.
      *

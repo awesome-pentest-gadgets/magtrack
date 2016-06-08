@@ -9,7 +9,7 @@ package com.iancaffey.magtrack;
  * @since 1.0
  */
 public interface CardTokenizer {
-    public static final CardTokenizer CREDIT_CARD = new DelimitedCardTokenizer('%', '?', ';', '?', ';', '?');
+    public static final CardTokenizer CREDIT_CARD = new DelimitedCardTokenizer("%?;?;?");
 
     /**
      * Constructs a new {@code CardTokenizer} with delimiters '%', '?', ';', '?', ';', '?', which are used in pairs to
