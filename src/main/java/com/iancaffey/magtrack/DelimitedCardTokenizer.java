@@ -60,7 +60,7 @@ public class DelimitedCardTokenizer implements CardTokenizer {
             int endIndex = data.indexOf(end, startIndex + 1);
             if (endIndex == -1)
                 endIndex = chars.length;
-            if (endIndex - startIndex < 2)
+            if (endIndex - startIndex == 1)
                 throw new TrackParseException("Empty track found between " + start + " and " + end + ".");
             char[] buffer = new char[endIndex - startIndex - 1];
             System.arraycopy(chars, startIndex + 1, buffer, 0, buffer.length);
