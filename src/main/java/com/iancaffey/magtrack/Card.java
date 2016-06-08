@@ -11,33 +11,18 @@ import java.util.Iterator;
  * @author Ian Caffey
  * @since 1.0
  */
-public class Card implements Iterable<Track> {
-    private final Track[] tracks;
+public class Card implements Iterable<String> {
+    private final String[] tracks;
 
     /**
      * Constructs a new {@code Card} with a group of tracks.
      *
      * @param tracks the tracks representing the entire magnetic stripe card
      */
-    public Card(Track... tracks) {
+    public Card(String... tracks) {
         if (tracks == null || tracks.length == 0)
             throw new IllegalArgumentException();
         this.tracks = tracks;
-    }
-
-    /**
-     * Constructs a new {@code Card} with a group of strings representing track data.
-     *
-     * @param tracks the strings to use in representing magnetic stripe card tracks
-     * @return a {@code Card} consisting of the specified tracks
-     */
-    public static Card valueOf(String... tracks) {
-        if (tracks == null || tracks.length == 0)
-            throw new IllegalArgumentException();
-        Track[] t = new Track[tracks.length];
-        for (int i = 0; i < tracks.length; i++)
-            t[i] = new Track(tracks[i]);
-        return new Card(t);
     }
 
     /**
@@ -46,7 +31,7 @@ public class Card implements Iterable<Track> {
      * @param index the index of the track
      * @return the track at the specified index
      */
-    public Track track(int index) {
+    public String track(int index) {
         return tracks[index];
     }
 
@@ -55,7 +40,7 @@ public class Card implements Iterable<Track> {
      *
      * @return all magnetic stripe card tracks
      */
-    public Track[] tracks() {
+    public String[] tracks() {
         return Arrays.copyOf(tracks, tracks.length);
     }
 
@@ -69,8 +54,8 @@ public class Card implements Iterable<Track> {
     }
 
     @Override
-    public Iterator<Track> iterator() {
-        return new Iterator<Track>() {
+    public Iterator<String> iterator() {
+        return new Iterator<String>() {
             int index = 0;
 
             @Override
@@ -79,7 +64,7 @@ public class Card implements Iterable<Track> {
             }
 
             @Override
-            public Track next() {
+            public String next() {
                 return tracks[index++];
             }
         };

@@ -49,6 +49,6 @@ public class CardReader {
      * @throws TrackParseException if parsing the track data fails
      */
     public Card read(String data) throws TrackParseException {
-        return Card.valueOf(tokenizer.tokenize(data));
+        return new Card(tokenizer.tokenize(data));
     }
 }
