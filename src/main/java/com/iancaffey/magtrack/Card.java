@@ -56,6 +56,7 @@ public class Card {
 
     /**
      * Returns a sequential {@link Stream} of the tracks.
+     * Avoids an array copy compared to calling {@code Arrays.stream(card.tracks());}.
      *
      * @return a {@code Stream} for the tracks
      */
