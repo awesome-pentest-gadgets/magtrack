@@ -2,6 +2,7 @@ package com.iancaffey.magtrack;
 
 import java.util.Arrays;
 import java.util.Iterator;
+import java.util.stream.Stream;
 
 /**
  * Card
@@ -11,7 +12,7 @@ import java.util.Iterator;
  * @author Ian Caffey
  * @since 1.0
  */
-public class Card implements Iterable<String> {
+public class Card {
     private final String[] tracks;
 
     /**
@@ -53,20 +54,12 @@ public class Card implements Iterable<String> {
         return tracks.length;
     }
 
-    @Override
-    public Iterator<String> iterator() {
-        return new Iterator<String>() {
-            int index = 0;
-
-            @Override
-            public boolean hasNext() {
-                return index < tracks.length;
-            }
-
-            @Override
-            public String next() {
-                return tracks[index++];
-            }
-        };
+    /**
+     * Returns a sequential {@link Stream} of the tracks.
+     *
+     * @return a {@code Stream} for the tracks
+     */
+    public Stream<String> stream() {
+        return Arrays.stream(tracks);
     }
 }

@@ -13,6 +13,6 @@ public class CreditCardTest {
     public static void main(String[] args) throws TrackParseException {
         Scanner scanner = new Scanner(System.in);
         while (scanner.hasNext())
-            CardReader.creditCardReader().read(scanner.nextLine()).forEach(System.out::println);
+            CardReader.creditCardReader().read(scanner.nextLine()).stream().forEach(System.out::println);
     }
 }
